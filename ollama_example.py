@@ -8,12 +8,8 @@ response = ollama.chat(
             "content": "Why is the sky blue?",
         },
     ],
+    stream=True,
 )
-# print(response["message"]["content"])
-res = response["message"]["content"]
 
-# typewriter print the response
-for c in res:
-    sys.stdout.write(c)
-    sys.stdout.flush()
-    time.sleep(0.01)
+for chunk in response:
+    print(chunk["message"]["content"], end="", flush=True)
