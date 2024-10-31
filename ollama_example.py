@@ -1,7 +1,4 @@
 import ollama
-import time
-import sys
-
 
 messages = []
 
