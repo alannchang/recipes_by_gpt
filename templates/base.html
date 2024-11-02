@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Blog Posts</h2>
+            <nav>
+                {% for post in posts %}
+                <a href="{{ url_for('post', post_id=post.id) }}" 
+                   class="{% if selected_post and selected_post.id == post.id %}active{% endif %}">
+                    {{ post.title }}
+                </a>
+                {% endfor %}
+            </nav>
+        </div>
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</body>
+</html> 

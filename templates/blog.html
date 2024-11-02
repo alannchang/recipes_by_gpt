@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if selected_post %}
+        <h1>{{ selected_post.title }}</h1>
+        <p>{{ selected_post.content }}</p>
+    {% else %}
+        <h1>Welcome to My Blog</h1>
+        <p>Select a post from the sidebar to read more.</p>
+    {% endif %}
+{% endblock %} 
