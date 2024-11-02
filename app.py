@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+from prompt import prompt
 import sqlite3
 from contextlib import contextmanager
 
@@ -74,9 +75,15 @@ def recipe(recipe_id):
 
 
 @app.route("/search")
-def search(request):
+def search():
     query = request.args.get("q")
-    return render_template("blog.html", recipes=blog_recipes, query=query)
+    response = prompt(query)
+    blog_recipes.append(
+        {"id": len(blog_recipes) + 1, "title": query, "content": response}
+    )
+    return render_template(
+        "blog.html", recipes=blog_recipes, selected_recipe=blog_recipes[-1]
+    )
 
 
 if __name__ == "__main__":
