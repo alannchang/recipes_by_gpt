@@ -9,7 +9,7 @@ def init_db():
     with get_db() as db:
         db.execute(
             """
-            CREATE TABLE IF NOT EXISTS posts (
+            CREATE TABLE IF NOT EXISTS recipes (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 title TEXT NOT NULL,
                 content TEXT NOT NULL
@@ -17,11 +17,11 @@ def init_db():
         """
         )
         # Insert sample data if table is empty
-        if not db.execute("SELECT * FROM posts").fetchall():
+        if not db.execute("SELECT * FROM recipes").fetchall():
             db.executemany(
-                "INSERT INTO posts (title, content) VALUES (?, ?)",
+                "INSERT INTO recipes (title, content) VALUES (?, ?)",
                 [
-                    ("First Post", "This is my first blog post"),
+                    ("First recipe", "This is my first recipe"),
                 ],
             )
 
@@ -40,33 +40,43 @@ def get_db():
         db.close()
 
 
-def get_all_posts():
+def get_all_recipes():
     with get_db() as db:
-        posts = db.execute("SELECT * FROM posts").fetchall()
-        return [dict(post) for post in posts]
+        recipes = db.execute("SELECT * FROM recipes").fetchall()
+        return [dict(recipe) for recipe in recipes]
 
 
-def get_post(post_id):
+def get_recipe(recipe_id):
     with get_db() as db:
-        post = db.execute("SELECT * FROM posts WHERE id = ?", (post_id,)).fetchone()
-        return dict(post) if post else None
+        recipe = db.execute(
+            "SELECT * FROM recipes WHERE id = ?", (recipe_id,)
+        ).fetchone()
+        return dict(recipe) if recipe else None
 
 
 # Initialize the database
 init_db()
 
-blog_posts = get_all_posts()
+blog_recipes = get_all_recipes()
 
 
 @app.route("/")
 def home():
-    return render_template("blog.html", posts=blog_posts)
+    return render_template("blog.html", recipes=blog_recipes)
 
 
-@app.route("/post/<int:post_id>")
-def post(post_id):
-    post = next((post for post in blog_posts if post["id"] == post_id), None)
-    return render_template("blog.html", posts=blog_posts, selected_post=post)
+@app.route("/recipe/<int:recipe_id>")
+def recipe(recipe_id):
+    recipe = next(
+        (recipe for recipe in blog_recipes if recipe["id"] == recipe_id), None
+    )
+    return render_template("blog.html", recipes=blog_recipes, selected_recipe=recipe)
+
+
+@app.route("/search")
+def search(request):
+    query = request.args.get("q")
+    return render_template("blog.html", recipes=blog_recipes, query=query)
 
 
 if __name__ == "__main__":

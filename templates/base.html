@@ -9,12 +9,12 @@
 <body>
     <div class="container">
         <div class="sidebar">
-            <h2>Blog Posts</h2>
+            <h2>Blog recipes</h2>
             <nav>
-                {% for post in posts %}
-                <a href="{{ url_for('post', post_id=post.id) }}" 
-                   class="{% if selected_post and selected_post.id == post.id %}active{% endif %}">
-                    {{ post.title }}
+                {% for recipe in recipes %}
+                <a href="{{ url_for('recipe', recipe_id=recipe.id) }}" 
+                   class="{% if selected_recipe and selected_recipe.id == recipe.id %}active{% endif %}">
+                    {{ recipe.title }}
                 </a>
                 {% endfor %}
             </nav>
