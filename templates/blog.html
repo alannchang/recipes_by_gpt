@@ -2,8 +2,11 @@
 
 {% block content %}
     {% if selected_recipe %}
-        <h1>{{ selected_recipe.title }}</h1>
-        <p>{{ selected_recipe.content }}</p>
+        <div class="recipe-detail">
+            <h1>{{ selected_recipe.title }}</h1>
+            <p>{{ selected_recipe.content }}</p>
+            <a href="{{ url_for('home') }}" class="back-button">Back to Home</a>
+        </div>
     {% else %}
         <h1>Welcome to My Recipes</h1>
         <p>Select a recipe from the sidebar to read more.</p>
