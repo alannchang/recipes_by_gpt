@@ -6,7 +6,7 @@ def prompt(query):
     messages.append(
         {
             "role": "user",
-            "content": f"Give me a recipe for {query}",
+            "content": f"Give me a recipe for {query} that includes the sections ingredients, instructions, and tips, in that order",
         }
     )
 
