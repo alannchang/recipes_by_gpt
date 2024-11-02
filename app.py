@@ -49,9 +49,15 @@ def search():
         },
     }
     blog_recipes.append(
-        {"id": len(blog_recipes) + 1, "title": query, "content": response}
+        {
+            "id": len(blog_recipes) + 1,
+            "title": query,
+            "contents": response["contents"],
+        }
     )
-    return render_template("recipe_copy.html", selected_recipe=response)
+    return render_template(
+        "recipe.html", recipes=blog_recipes, selected_recipe=response
+    )
 
 
 if __name__ == "__main__":
