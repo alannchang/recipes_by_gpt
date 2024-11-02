@@ -63,7 +63,7 @@ blog_recipes = get_all_recipes()
 
 @app.route("/")
 def home():
-    return render_template("blog.html", recipes=blog_recipes)
+    return render_template("recipe.html", recipes=blog_recipes)
 
 
 @app.route("/recipe/<int:recipe_id>")
@@ -71,7 +71,7 @@ def recipe(recipe_id):
     recipe = next(
         (recipe for recipe in blog_recipes if recipe["id"] == recipe_id), None
     )
-    return render_template("blog.html", recipes=blog_recipes, selected_recipe=recipe)
+    return render_template("recipe.html", recipes=blog_recipes, selected_recipe=recipe)
 
 
 @app.route("/search")
@@ -82,7 +82,7 @@ def search():
         {"id": len(blog_recipes) + 1, "title": query, "content": response}
     )
     return render_template(
-        "blog.html", recipes=blog_recipes, selected_recipe=blog_recipes[-1]
+        "recipe.html", recipes=blog_recipes, selected_recipe=blog_recipes[-1]
     )
 
 
