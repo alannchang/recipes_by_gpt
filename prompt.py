@@ -15,3 +15,7 @@ def prompt(query):
         messages=messages,
     )
     return response["message"]["content"]
+
+
+if __name__ == "__main__":
+    print(prompt("pizza"))
