@@ -16,7 +16,7 @@ def text_to_recipe_dict(text):
 
         # Extract title
         if line.startswith("title:"):
-            recipe["title"] = line.replace("title:", "").strip()
+            recipe["title"] = line.replace("title:", "").strip().title()
         # Identify sections
         elif line == "contents:":
             continue
@@ -41,11 +41,11 @@ def text_to_recipe_dict(text):
 
 
 # Example text
-recipe_text = """Title: Classic Homemade Pizza Recipe
+recipe_text = """title: Classic Homemade Pizza Recipe
 
-Contents:
+contents:
 
-Ingredients:
+ingredients:
 - 2 cups of warm water
 - 1 tablespoon of sugar
 - 1 teaspoon of active dry yeast
@@ -56,7 +56,7 @@ Ingredients:
 - 2 cups of shredded mozzarella cheese
 - Toppings of choice (e.g. pepperoni, mushrooms, bell peppers, onions)
 
-Instructions:
+instructions:
 1. In a large mixing bowl, combine the warm water, sugar, and yeast. Let it sit for 5-10 minutes until the mixture becomes frothy.
 2. Add the olive oil, salt, and 2 cups of flour to the bowl. Mix until a shaggy dough forms.
 3. Gradually add the remaining 2 cups of flour, kneading the dough for 5-10 minutes until it becomes smooth and elastic.
@@ -68,7 +68,7 @@ Instructions:
 9. Sprinkle the shredded mozzarella cheese over the sauce.
 10. Add your desired toppings and bake for 15-20 minutes until the crust is golden brown and the cheese is melted.
 
-Tips:
+tips:
 - Make sure to knead the dough long enough to develop its gluten, which will give it a better texture.
 - Let the dough rise in a warm place, such as near a radiator or oven.
 - Use a pizza stone in the oven to achieve a crispy crust.
@@ -78,4 +78,4 @@ Tips:
 if __name__ == "__main__":
     recipe = text_to_recipe_dict(recipe_text)
     # print(recipe)
-    print(recipe["Contents"]["Tips"])
+    print(recipe["title"])
