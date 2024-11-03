@@ -18,7 +18,7 @@
         <p>Enter a dish you want to make and I will give you a recipe.</p>
         <div class="search-container">
             <form action="{{ url_for('search') }}" method="GET">
-                <input type="text" name="q" placeholder="Enter a dish" class="search-input">
+                <input type="text" name="q" placeholder="Enter a dish" class="search-input" required>
                 <button type="submit" class="search-button">Submit</button>
             </form>
         </div>
