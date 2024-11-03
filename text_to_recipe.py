@@ -76,6 +76,6 @@ Tips:
 - Consider using a pizza peel or parchment paper to transfer the dough to the oven."""
 
 if __name__ == "__main__":
-    recipe = text_to_recipe_json(recipe_text)
+    recipe = text_to_recipe_dict(recipe_text)
     # print(recipe)
     print(recipe["Contents"]["Tips"])
