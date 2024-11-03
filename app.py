@@ -39,15 +39,14 @@ def search():
     query = request.args.get("q")
     response = text_to_recipe_dict(prompt(query))
 
-    blog_recipes.append(
-        {
-            "id": len(blog_recipes) + 1,
-            "title": query,
-            "contents": response["contents"],
-        }
-    )
+    new_recipe = {
+        "id": len(blog_recipes) + 1,
+        "title": response["title"],
+        "contents": response["contents"],
+    }
+    blog_recipes.append(new_recipe)
     return render_template(
-        "recipe.html", recipes=blog_recipes, selected_recipe=response
+        "recipe.html", recipes=blog_recipes, selected_recipe=new_recipe
     )
 
 
