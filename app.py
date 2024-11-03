@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from prompt import prompt
+from text_to_recipe import text_to_recipe_dict
 from contextlib import contextmanager
 
 app = Flask(__name__)
@@ -36,18 +37,8 @@ def recipe(recipe_id):
 @app.route("/search")
 def search():
     query = request.args.get("q")
-    # response = prompt(query)
-    response = {
-        "title": query,
-        "contents": {
-            "ingredients_title": "Ingredients",
-            "instructions_title": "Instructions",
-            "tips_title": "Tips",
-            "ingredients": "list of ingredients",
-            "instructions": "list of instructions",
-            "tips": "list of tips",
-        },
-    }
+    response = text_to_recipe_dict(prompt(query))
+
     blog_recipes.append(
         {
             "id": len(blog_recipes) + 1,
