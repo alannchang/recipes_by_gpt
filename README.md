@@ -9,6 +9,7 @@
 # How to Run
 
 1. Install the required packages: `pip install -r requirements.txt`
+2. Start ollama, and run the llama 3.2 model
 2. Run the app: `python app.py`
 3. Go to `localhost:5000` in your web browser to see the app.
 
