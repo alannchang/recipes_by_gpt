@@ -5,11 +5,23 @@
         <div class="recipe-detail"></div>
             <h1>{{ selected_recipe.title }}</h1>
             <h2>Ingredients</h2>
-            <p>{{ selected_recipe.contents.ingredients }}</p>
+            <ul>
+                {% for ingredient in selected_recipe.contents.ingredients %}
+                <li>{{ ingredient }}</li>
+                {% endfor %}
+            </ul>
             <h2>Instructions</h2>
-            <p>{{ selected_recipe.contents.instructions }}</p>
+            <ol>
+                {% for instruction in selected_recipe.contents.instructions %}
+                <li>{{ instruction }}</li>
+                {% endfor %}
+            </ol>
             <h2>Tips</h2>
-            <p>{{ selected_recipe.contents.tips }}</p>
+            <ul>
+                {% for tip in selected_recipe.contents.tips %}
+                <li>{{ tip }}</li>
+                {% endfor %}
+            </ul>
             <a href="{{ url_for('home') }}" class="back-button">Back to Home</a>
         </div>
     {% else %}

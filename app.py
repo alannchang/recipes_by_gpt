@@ -11,11 +11,11 @@ blog_recipes = [
         "title": "First Recipe",
         "contents": {
             "ingredients_title": "Ingredients",
-            "ingredients": "Sample ingredients list",
+            "ingredients": ["Sample ingredients list"],
             "instructions_title": "Instructions",
-            "instructions": "Sample cooking instructions",
+            "instructions": ["Sample cooking instructions"],
             "tips_title": "Tips",
-            "tips": "Sample cooking tips",
+            "tips": ["Sample cooking tips"],
         },
     }
 ]
