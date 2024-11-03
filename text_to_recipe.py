@@ -1,7 +1,7 @@
-def text_to_recipe_dict(text):
+def text_to_recipe_dict(text, query):
     # Initialize dictionary structure
     recipe = {
-        "title": "",
+        "title": query.title(),
         "contents": {"ingredients": [], "instructions": [], "tips": []},
     }
 

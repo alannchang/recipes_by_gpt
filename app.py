@@ -37,7 +37,7 @@ def recipe(recipe_id):
 @app.route("/search")
 def search():
     query = request.args.get("q")
-    response = text_to_recipe_dict(prompt(query))
+    response = text_to_recipe_dict(prompt(query), query)
 
     new_recipe = {
         "id": len(blog_recipes) + 1,
