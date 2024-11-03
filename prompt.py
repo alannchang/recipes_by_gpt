@@ -6,7 +6,7 @@ def prompt(query):
     messages.append(
         {
             "role": "user",
-            "content": f"Give me a recipe for {query} that includes the sections ingredients, instructions, and tips, in that order. Return the response as a dictionary with keys 'Title', 'Ingredients', 'Instructions', and 'Tips'. Keep the values for each key section as a string.",
+            "content": f"Give me a recipe for {query} that includes the sections ingredients, instructions, and tips, in that order. Return the response in this format: title: <title>, contents: <contents>. The <contents> should have keys: ingredients, instructions, and tips.",
         }
     )
 
@@ -18,4 +18,5 @@ def prompt(query):
 
 
 if __name__ == "__main__":
-    print(prompt("pizza"))
+    res = prompt("pizza")
+    print(res)
