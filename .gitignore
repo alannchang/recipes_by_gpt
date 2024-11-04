@@ -1,0 +1,3 @@
+/recipe-by-gpt-env/*
+*.db
+*.pyc

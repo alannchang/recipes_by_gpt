@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if selected_recipe %}
+        <div class="recipe-detail"></div>
+            <h1>{{ selected_recipe.title }}</h1>
+            <h2>Ingredients</h2>
+            <ul>
+                {% for ingredient in selected_recipe.contents.ingredients %}
+                <li>{{ ingredient }}</li>
+                {% endfor %}
+            </ul>
+            <h2>Instructions</h2>
+            <ol>
+                {% for instruction in selected_recipe.contents.instructions %}
+                <li>{{ instruction }}</li>
+                {% endfor %}
+            </ol>
+            <h2>Tips</h2>
+            <ul>
+                {% for tip in selected_recipe.contents.tips %}
+                <li>{{ tip }}</li>
+                {% endfor %}
+            </ul>
+            <a href="{{ url_for('home') }}" class="back-button">Back to Home</a>
+        </div>
+    {% else %}
+        <h1>Welcome to My Recipes</h1>
+        <p>Select a recipe from the sidebar to read more.</p>
+        <p>Enter a dish you want to make and I will give you a recipe.</p>
+        <div class="search-container">
+            <form action="{{ url_for('search') }}" method="GET">
+                <input type="text" name="q" placeholder="Enter a dish" class="search-input" required>
+                <button type="submit" class="search-button">Submit</button>
+            </form>
+        </div>
+    {% endif %}
+{% endblock %} 
