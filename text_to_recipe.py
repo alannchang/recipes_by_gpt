@@ -28,7 +28,7 @@ def text_to_recipe_dict(text, query):
             current_section = "tips"
         # Add content to appropriate section
         elif line.startswith("-") and current_section:
-            recipe["contents"][current_section].append(line.replace("-", "").strip())
+            recipe["contents"][current_section].append(line.replace("-", "", 1).strip())
         elif line.startswith(tuple("0123456789")) and current_section:
             # Remove number prefix from instructions
             recipe["contents"][current_section].append(
