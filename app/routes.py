@@ -1,7 +1,7 @@
 from app import app
 from flask import Flask, render_template, request
-from prompt import prompt
-from text_to_recipe import text_to_recipe_dict
+from app.prompt import prompt
+from app.text_to_recipe import text_to_recipe_dict
 
 
 blog_recipes = [
