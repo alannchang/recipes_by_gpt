@@ -6,7 +6,7 @@ def prompt(query):
     messages.append(
         {
             "role": "user",
-            "content": f"Give me a recipe for {query} that includes the sections ingredients, instructions, and tips, in that order. Return the response in this format: title: <title>, contents: ingredients, instructions, tips. The title of the recipe must start with 'title:'. The section names must be in lowercase.",
+            "content": f"Give me a recipe for {query} that includes the sections ingredients, instructions, and tips, in that order. Return the response in this format: title: <title>, contents: ingredients: (list ingredients without bullets), instructions: (numbered steps), tips: (list tips without bullets). The title of the recipe must start with 'title:'. The section names must be in lowercase.",
         }
     )
 
