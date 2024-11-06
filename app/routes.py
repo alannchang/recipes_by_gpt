@@ -30,6 +30,8 @@ def recipe(recipe_id):
     recipe = next(
         (recipe for recipe in blog_recipes if recipe["id"] == recipe_id), None
     )
+    if recipe is None:
+        return render_template("404.html"), 404
     return render_template("recipe.html", recipes=blog_recipes, selected_recipe=recipe)
 
 
