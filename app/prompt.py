@@ -12,7 +12,7 @@ def prompt(query, type="dish"):
     messages.append(
         {
             "role": "user",
-            "content": content      
+            "content": content
         }
     )
 

@@ -9,11 +9,8 @@ blog_recipes = [
         "id": 1,
         "title": "First Recipe",
         "contents": {
-            "ingredients_title": "Ingredients",
             "ingredients": ["Sample ingredients list"],
-            "instructions_title": "Instructions",
             "instructions": ["Sample cooking instructions"],
-            "tips_title": "Tips",
             "tips": ["Sample cooking tips"],
         },
     }
@@ -30,6 +27,8 @@ def recipe(recipe_id):
     recipe = next(
         (recipe for recipe in blog_recipes if recipe["id"] == recipe_id), None
     )
+    if recipe is None:
+        return render_template("404.html"), 404
     return render_template("recipe.html", recipes=blog_recipes, selected_recipe=recipe)
 
 
