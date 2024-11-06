@@ -33,10 +33,9 @@ def recipe(recipe_id):
     return render_template("recipe.html", recipes=blog_recipes, selected_recipe=recipe)
 
 
-@app.route("/search")
-def search():
+def search(type):
     query = request.args.get("q")
-    response = text_to_recipe_dict(prompt(query), query)
+    response = text_to_recipe_dict(prompt(query, type), query)
 
     new_recipe = {
         "id": len(blog_recipes) + 1,
@@ -47,3 +46,13 @@ def search():
     return render_template(
         "recipe.html", recipes=blog_recipes, selected_recipe=new_recipe
     )
+
+
+@app.route("/search-by-dish")
+def search_by_dish():
+    return search("dish")
+
+
+@app.route("/search-by-ingredient")
+def search_by_ingredient():
+    return search("ingredient")
