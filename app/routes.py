@@ -9,11 +9,8 @@ blog_recipes = [
         "id": 1,
         "title": "First Recipe",
         "contents": {
-            "ingredients_title": "Ingredients",
             "ingredients": ["Sample ingredients list"],
-            "instructions_title": "Instructions",
             "instructions": ["Sample cooking instructions"],
-            "tips_title": "Tips",
             "tips": ["Sample cooking tips"],
         },
     }
