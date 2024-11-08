@@ -29,18 +29,28 @@
         <p>Select a recipe from the sidebar to read more.</p>
         <p>Enter a dish you want to make and I will give you a recipe.</p>
         <div class="search-container">
-            <form action="{{ url_for('search_by_dish') }}" method="GET">
+            <form action="{{ url_for('search_by_dish') }}" method="GET" onsubmit="disableButtons()">
                 <input type="text" name="q" placeholder="Enter a dish" class="search-input" required>
                 <button type="submit" class="search-button">Submit</button>
             </form>
         </div>
         <p>Or enter ingredient(s) and I will give you a recipe.</p>
         <div class="search-container">
-            <form action="{{ url_for('search_by_ingredient') }}" method="GET">
+            <form action="{{ url_for('search_by_ingredient') }}" method="GET" onsubmit="disableButtons()">
                 <input type="text" name="q" placeholder="Enter ingredient(s)" class="search-input" required>
                 <button type="submit" class="search-button">Submit</button>
             </form>
         </div>
+
+        <script>
+            function disableButtons() {
+                const buttons = document.querySelectorAll('.search-button');
+                buttons.forEach(button => {
+                    button.disabled = true;
+                });
+                return true;
+            }
+        </script>
  
     {% endif %}
 {% endblock %} 
