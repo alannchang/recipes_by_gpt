@@ -46,12 +46,12 @@ def test_search_route(mock_text_to_recipe_dict, mock_prompt, client):
         },
     }
 
-    response = client.get("/search?q=test+query")
+    response = client.get("/search-by-dish?q=test+query")
     assert response.status_code == 200
     assert b"Mocked Recipe" in response.data
 
     # Verify the mocks were called correctly
-    mock_prompt.assert_called_once_with("test query")
+    mock_prompt.assert_called_once_with("test query", "dish")
     mock_text_to_recipe_dict.assert_called_once()
 
     # Verify new recipe was added to blog_recipes
