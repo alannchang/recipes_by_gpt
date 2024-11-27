@@ -13,10 +13,11 @@
 2. Run the app: `flask run`
 3. Go to `localhost:5000` in your web browser to see the app.
 
-# Things to Improve
-- Save the recipes to a database
-- Add functionality to edit and delete recipes
-- Generate a grocery list from a selection of recipes
-- Allow the user to accept or reject the generated recipe and generate a new one
-- Improve response time of the ollama API
-- If user wants a new recipe, provide suggestions for how to improve the next generated recipe
+# Usage
+## Searching By Dish
+Generate a recipe for a specific dish by entering the name of the dish in the text entry bar.
+![alt text](images/search_by_dish.jpg)
+## Searching By List of Ingredients
+Generate a recipe based on a list of ingredients by entering a comma separated list of ingredients in the text entry bar
+
+![alt text](images/search_by_ingredients.jpg)
